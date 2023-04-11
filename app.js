@@ -7,9 +7,8 @@ app.use(cors());
 
 app.use('/', indexRouter);
 
-const mode = process.env.mode;
-
-if (mode && mode === 'dev') {
+const env = process.env.NODE_ENV;
+if (env && env === 'local') {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
