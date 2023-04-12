@@ -21,6 +21,8 @@ const collectRencentCORRA = async (corraData) => {
     const value = corra["AVG.INTWO"].v;
     if (value !== recentCORRA[recentCORRA.length - 1]?.value) {
       recentCORRA.push({ date, value });
+    } else {
+      recentCORRA[recentCORRA.length - 1].date += ', ' + date;
     }
   });
   return recentCORRA;
