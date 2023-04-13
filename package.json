@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "NODE_ENV=${NODE_ENV:=local} nodemon app.js && echo $NODE_ENV"
+    "dev": "NODE_ENV=${NODE_ENV:=local} nodemon app.js && echo $NODE_ENV",
+    "deploy": "gcloud beta functions deploy zendata_api --gen2 --runtime=nodejs18 --region=us-west1 --trigger-http --allow-unauthenticated --entry-point cf_api"
   },
   "author": {
     "name": "Zheng Yang",
