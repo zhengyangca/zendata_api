@@ -1,3 +1,7 @@
+Gold API
+goldAPI requires APIKEY, to obtain the api key, go to https://www.goldapi.io/dashboard.
+
+
 Deployment
 
 gcloud beta functions deploy zendata_api \

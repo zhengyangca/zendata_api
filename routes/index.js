@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var { getCORRA, getCPI } = require("../datasource/bank_of_canada.js");
 var { getGCEconIndicators } = require("../datasource/gc.js");
+var { getMetalPrice} = require("../datasource/goldAPI.js");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -25,6 +26,14 @@ router.get("/cpi", async function (req, res, next) {
   const { query } = req;
   const cpi = await getCPI(parseInt(query.recent));
   res.send(cpi);
+});
+
+/* GET metal price */
+router.get("/metal", async function (req, res, next) {
+  const { query } = req;
+  const { metalCode, currency } = query;
+  const metalPrice = await getMetalPrice(metalCode, currency);
+  res.send(metalPrice);
 });
 
 router.get("/gc-econ-titles", async function (req, res, next) {
